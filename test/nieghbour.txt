@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int k,r1a,r1b,r0a,r0b;
+    sacnf("%d %d %d %d",&r1a,&r1b,&r0a,&r0b);
+    scanf("%d",&k);
+    int a[4][4]={{0,0,0,0},{0,1,1,0},{0,0,1,0},{0,1,0,1}};
+    int count1=0;
+    int count0=0;
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            if(i+1<n){
+                if(a[i+1][j]==1){
+                    count1++;
+                }
+                else{
+                    count0++;
+                }
+            }
+            if(j+1<n){
+                if(a[i][j+1]==1){
+                    count1++;
+                }
+                else{
+                    count0++;
+                }
+            }
+            if(j-1<=0 && i<n){
+                if(a[i][j-1]==1){
+                    count1++;
+                }
+                else{
+                    count0++;
+                }
+            }
+            if(i-1<=0 && j<n){
+                if(a[i-1][j]==1){
+                    count1++;
+                }
+                else{
+                    count0++;
+                }
+            }
+            if(i-1>=0 && j-1>=0){
+                if(a[i-1][j-1]==1){
+                    count1++;
+                }
+                else{
+                    count0++;
+                }
+            }
+            if(j+1<n && i-1>=0){
+                if(a[i-1][j+1]==1){
+                    count1++;
+                }
+                else{
+                    count0++;
+                }
+            }
+            if(j-1>=0 && i+1<n){
+                if(a[i+1][j-1]==1){
+                    count1++;
+                }
+                else{
+                    count0++;
+                }
+            }
+            
+            if(count1>=r1a && count1<=r1b){
+                
+            }
+        }
+    }
+    return 0;
+}
