@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+
+    int maze[4][4];
+    int visited[4][4];
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            scanf("%d ",&maze[i][j]);
+        }
+    }
+    int x=0;
+    int y=0;
+    int n=4;
+    while((x<n) && (y<n)){
+        if(x+1<n && y+1<n){
+            if(maze[x][y+1]==1 && maze[x+1][y]==1){
+                x=x+1;
+                visited[x][y]=2;
+                continue;
+            }
+            if(maze[x][y+1]==1 && maze[x+1][y]==0){
+                y=y+1;
+                visited[x][y]=2;
+                continue;
+            }
+            
+            if(maze[x][y+1]==0 && maze[x+1][y]==1){
+                x=x+1;
+                visited[x][y]=2;
+                continue;
+            }
+        }
+        if(x+1>=n){
+            if(maze[x][y+1]==1){
+                y=y+1;
+                visited[x][y]=2;
+                continue;
+            }
+        }
+        if(y+1>=n){
+            if(maze[x+1][y]==1){
+                x=x+1;
+                visited[x][y]=2;
+                continue;
+            }
+        }
+        
+        if(x==n-1 && y==n-1){
+            break;
+        }
+    }
+    
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+    if(visited[i][j]==2){
+                maze[i][j]=1;
+            }
+            else{
+                maze[i][j]=0;
+            }
+        }
+    }
+    maze[0][0]=1;
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            printf("%d ",maze[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
